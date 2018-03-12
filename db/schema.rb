@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20180309183334) do
 
   create_table "models", force: :cascade do |t|
     t.string "name"
+    t.text "url"
   end
 
 end
