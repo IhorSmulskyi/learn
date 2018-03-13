@@ -15,7 +15,7 @@ get '/1' do
 end
 
 post '/submit' do
-	@model = Model.new(params[:model])
+	@model = Model.new(params[:model],permit([:url, @token]))
 	# @model = Model.new(params[:model].permit[:url])
 	if @model.save
 		redirect '/models'
