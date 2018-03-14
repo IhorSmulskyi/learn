@@ -15,8 +15,7 @@ get '/1' do
 end
 
 post '/submit' do
-	@model = Model.new(params[:model],permit([:url, @token]))
-	# @model = Model.new(params[:model].permit[:url])
+	@model = Model.new(params[:model])
 	if @model.save
 		redirect '/models'
 	else
@@ -24,13 +23,12 @@ post '/submit' do
 	end
 end
 
-
-# get '/url'
-#     @models = Group.find(params[:url])
-# end
-
-
 get '/models' do
 	@models = Model.all
 	erb :models
 end
+get '/:url' do
+	@models = Model.find(params[:id])
+	erb :url
+end
+
