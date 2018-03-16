@@ -9,5 +9,10 @@ class Model < ActiveRecord::Base
 	  t.url=random_string
 	end
 
+	def decrypted_name
+		cipher = Gibberish::AES.new('p4ssw0rd')
+		cipher.decrypt(self[:name])
+	end
+
 
 end

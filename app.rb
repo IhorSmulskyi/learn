@@ -27,6 +27,12 @@ get '/models' do
 	@models = Model.all
 	erb :models
 end
+
+get '/models/:slug' do
+	@model = Model.find_by_url(params[:slug])
+	erb :show
+end
+
 get '/:url' do
 	@models = Model.find(params[:id])
 	erb :url
