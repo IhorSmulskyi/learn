@@ -30,11 +30,15 @@ end
 
 get '/models/:slug' do
 	@model = Model.find_by_url(params[:slug])
-	erb :show
+	@message = @model.decrypted_name
+	erb :show 
+	Model.destroy(@model.id)
 end
 
 get '/:url' do
 	@models = Model.find(params[:id])
 	erb :url
+
+
 end
 
